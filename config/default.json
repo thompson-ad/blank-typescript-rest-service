@@ -1,0 +1,11 @@
+{
+    "port": "4000",
+    "db": {
+        "mysql": {
+            "database": "test-app",
+            "username": "root",
+            "password": "",
+            "host": "localhost"
+        }
+    }
+}

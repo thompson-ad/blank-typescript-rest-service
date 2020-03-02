@@ -1,11 +1,15 @@
-// Blank project
+import express from "express";
+import config from "config";
+import sequelize from "./models";
+import routes from "./routes";
+import checkToken from "./middleware/token";
 
-const sum = (a:number, b:number) => {
-    return a + b;
-}
+const app = express();
 
-const mult = (a:number, b:number) => {
-    return a * b;
-}
+app.use(checkToken);
+app.use(routes);
 
-export { sum, mult };
+(async () => {
+  await sequelize.sync();
+  app.listen(config.get<number>("port"));
+})();
